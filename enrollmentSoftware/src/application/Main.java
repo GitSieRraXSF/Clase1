@@ -12,9 +12,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainMenu.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Enrollments.fxml"));
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
+			scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Enrollment Software");
 			primaryStage.show();
