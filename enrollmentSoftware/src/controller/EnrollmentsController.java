@@ -34,11 +34,19 @@ public class EnrollmentsController {
 	@FXML
 	private TableView<Enrollment> enrollmentTable;
 	@FXML
+	private TableView<Student> StudentsCredView;
+	@FXML
 	private TableColumn<Enrollment, String> studentIdColumn;
 	@FXML
 	private TableColumn<Enrollment, String> courseCodeColumn;
 	@FXML
 	private TableColumn<Enrollment, LocalDate> dateColumn;
+	@FXML
+	private TableColumn<Student, String> StudentsColumn2;
+	@FXML
+	private TableColumn<Student, String> IDstudentColumn;
+	@FXML
+	private TableColumn<Student, String> CreditsColumn2;
 	@FXML
 	private Label credits;
 
@@ -52,6 +60,10 @@ public class EnrollmentsController {
 		studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
 		courseCodeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
 		dateColumn.setCellValueFactory(new PropertyValueFactory<>("enrollmentDate"));
+		
+		IDstudentColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+		StudentsColumn2.setCellValueFactory(new PropertyValueFactory<>("name"));
+		CreditsColumn2.setCellValueFactory(new PropertyValueFactory<>("totalCredits"));
 
 		enrollmentDatePicker.setValue(LocalDate.now());
 		loadComboBoxes();
@@ -75,28 +87,24 @@ public class EnrollmentsController {
 
 		enrollmentDAO.save(enrollment, selectedStudent, selectedCourse);
 		loadEnrollments();
-
-
-		
 	}
 
 	@FXML
-	private void handleRemove(ActionEvent event) {
-
+	private void handleRemove(ActionEvent event) throws SQLException {
+		enrollmentDAO.delete(null, null, null);
+		showAlert("REALIZADO!", "Informacion Borrada!", "La informacion ha sido borrada con exito!");
 	}
 
-	
 	private void loadEnrollments() {
 		enrollmentTable.getItems().setAll(enrollmentDAO.fetch());
-    	
+		StudentsCredView.getItems().setAll(studentDAO.fetch());
 	}
-	
-    private void showAlert(String title, String header, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 
+	private void showAlert(String title, String header, String message) {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
 }

@@ -48,8 +48,8 @@
                   <ComboBox fx:id="courseComboBox" prefWidth="150.0" GridPane.rowIndex="3" />
                   <Label text="Student" GridPane.rowIndex="2" />
                   <Label text="Course" GridPane.rowIndex="4" />
-                  <DatePicker fx:id="enrollmentDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Enrollment Date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="enrollmentDatePicker" GridPane.rowIndex="5" />
+                  <Label text="Enrollment Date" GridPane.rowIndex="6" />
                   <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hbox" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <children>
                         <Button mnemonicParsing="false" onAction="#handleSave" text="Save" />
@@ -57,6 +57,13 @@
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TableView fx:id="StudentsCredView" prefHeight="123.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <columns>
+                        <TableColumn fx:id="IDstudentColumn" prefWidth="75.0" text="Id" />
+                      <TableColumn fx:id="StudentsColumn2" prefWidth="127.0" text="Students" />
+                      <TableColumn fx:id="CreditsColumn2" prefWidth="112.0" text="Credits" />
+                    </columns>
+                  </TableView>
                </children>
             </GridPane>
          </children>
