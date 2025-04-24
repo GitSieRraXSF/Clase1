@@ -104,7 +104,7 @@ public class EnrollmentDAO {
 		}
 	}
 
-	public void delete(Enrollment enrollment, Student student, Course course) throws SQLException {
+		public void delete(Enrollment enrollment, Student student, Course course) throws SQLException {
 		String insertSQL = "DELETE FROM Enrollment2 WHERE WHERE student_id=? AND course_code=?";
 		String updateStudentSQL = "UPDATE Student2 SET total_credits = ? WHERE id = ?";
 		String updateCourseSQL = "UPDATE Course2 SET quota = ? WHERE code = ?";
@@ -116,8 +116,7 @@ public class EnrollmentDAO {
 				PreparedStatement updateCourseStmt = connection.prepareStatement(updateCourseSQL)) {
 			// Step 1: Delete Enrollment
 			insertStmt.setString(1, enrollment.getStudentId());
-			insertStmt.setString(2, enrollment.getCourseCode());
-			insertStmt.setDate(3, java.sql.Date.valueOf(enrollment.getEnrollmentDate()));
+			insertStmt.setString(1, enrollment.getCourseCode());
 			insertStmt.executeUpdate();
 
 			// Step 2: Update Student total credits
