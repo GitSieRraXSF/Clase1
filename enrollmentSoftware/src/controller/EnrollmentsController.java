@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -74,8 +75,7 @@ public class EnrollmentsController {
 
 		enrollmentDAO.save(enrollment, selectedStudent, selectedCourse);
 		loadEnrollments();
-		
-		credits.setText(String.valueOf(selectedStudent.getTotalCredits()));
+
 
 		
 	}
@@ -87,13 +87,16 @@ public class EnrollmentsController {
 
 	
 	private void loadEnrollments() {
-    	ObservableList<Enrollment> enrollments = FXCollections.observableArrayList();
-        for (Enrollment enrollment: enrollmentDAO.fetch()) {
-        	enrollments.add(enrollment);              
-            
-        }
-       
-		enrollmentTable.setItems(enrollments);
+		enrollmentTable.getItems().setAll(enrollmentDAO.fetch());
+    	
 	}
+	
+    private void showAlert(String title, String header, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }

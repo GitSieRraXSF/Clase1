@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane stylesheets="@../../resources/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EnrollmentsController">
+<BorderPane stylesheets="@../../resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EnrollmentsController">
    <center>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="700.0" styleClass="vbox" BorderPane.alignment="CENTER">
          <children>
@@ -56,12 +56,7 @@
                         <Button mnemonicParsing="false" onAction="#handleRemove" text="Remove" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <children>
-                        <Label text="Total credits" />
-                        <Label fx:id="credits" text="0" />
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
