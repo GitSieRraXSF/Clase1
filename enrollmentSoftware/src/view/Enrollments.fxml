@@ -56,8 +56,8 @@
                         <Button mnemonicParsing="false" onAction="#handleRemove" text="Remove" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TableView fx:id="StudentsCredView" prefHeight="123.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+                  <TableView fx:id="StudentsCredView" prefHeight="105.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4">
                     <columns>
                         <TableColumn fx:id="IDstudentColumn" prefWidth="75.0" text="Id" />
                       <TableColumn fx:id="StudentsColumn2" prefWidth="127.0" text="Students" />

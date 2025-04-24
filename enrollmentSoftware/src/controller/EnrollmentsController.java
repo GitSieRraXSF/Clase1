@@ -60,7 +60,7 @@ public class EnrollmentsController {
 		studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
 		courseCodeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
 		dateColumn.setCellValueFactory(new PropertyValueFactory<>("enrollmentDate"));
-		
+
 		IDstudentColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 		StudentsColumn2.setCellValueFactory(new PropertyValueFactory<>("name"));
 		CreditsColumn2.setCellValueFactory(new PropertyValueFactory<>("totalCredits"));
@@ -87,11 +87,18 @@ public class EnrollmentsController {
 
 		enrollmentDAO.save(enrollment, selectedStudent, selectedCourse);
 		loadEnrollments();
+		showAlert("REALIZADO!", "Informacion Guardada!", "La informacion ha sido guardada con exito!");
 	}
 
 	@FXML
 	private void handleRemove(ActionEvent event) throws SQLException {
-		enrollmentDAO.delete(null, null, null);
+		Enrollment enrollment = enrollmentTable.getSelectionModel().getSelectedItem();
+		Student selectedStudent = studentDAO.fetch().stream().filter(s -> s.getId().equals(enrollment.getStudentId()))
+				.findFirst().orElse(null);
+		Course selectedCourse = courseDAO.fetch().stream().filter(c -> c.getCode().equals(enrollment.getCourseCode()))
+				.findFirst().orElse(null);
+		enrollmentDAO.delete(enrollment, selectedStudent, selectedCourse);
+		loadEnrollments();
 		showAlert("REALIZADO!", "Informacion Borrada!", "La informacion ha sido borrada con exito!");
 	}
 
